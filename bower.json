@@ -2,7 +2,10 @@
   "name": "scorekeep",
   "dependencies": {
     "ember": "~2.7.0",
-    "ember-cli-shims": "0.1.1",
-    "ember-qunit-notifications": "0.1.0"
+    "ember-cli-shims": "~0.1.1",
+    "ember-qunit-notifications": "0.1.0",
+    "firebase": "^3.0.0",
+    "bootstrap": "4.0.0-alpha.3",
+    "font-awesome": "~4.5.0"
   }
 }
