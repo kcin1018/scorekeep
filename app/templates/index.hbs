@@ -52,11 +52,23 @@
       <div class="list-group">
         {{#each model as |game|}}
           <div class="list-group-item">
+            <div class="pull-right text-info">
+                {{game.players.length}} Players
+            </div>
             <h4 class="list-group-item-heading">
               {{game.name}}
               <small class="text-muted">{{game.type}}</small>
             </h4>
             <small>Played on {{moment-format game.playedAt 'M/D/YYYY'}}</small>
+            <hr/>
+            <div class="text-xs-center">
+              {{#if game.players.length}}
+                <button class="btn btn-secondary">{{fa-icon 'list'}}<span class="hidden-sm-down"> Scores</span></button>
+              {{/if}}
+              <button class="btn btn-secondary">{{fa-icon 'play-circle'}}<span class="hidden-sm-down"> Start</span></button>
+              <button class="btn btn-secondary text-primary">{{fa-icon 'edit'}}<span class="hidden-sm-down"> Edit</span></button>
+              <button class="btn btn-secondary text-danger">{{fa-icon 'trash-o'}}<span class="hidden-sm-down"> Remove</span></button>
+            </div>
           </div>
         {{/each}}
       </div>
