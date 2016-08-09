@@ -1,0 +1,77 @@
+{{#if showCreateGame}}
+
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form {{action 'authenticate' on='submit'}}>
+        <div class="form-group">
+            <label>Name</label>
+            {{input type='email' value=newGame.name placeholder="Name" class="form-control"}}
+        </div>
+        <div class="form-group">
+            <label>Played at:</label>
+            {{input type='date' value=newGame.playedAt placeholder="Name" class="form-control"}}
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            {{input type='text' value=newGame.type placeholder="Name" class="form-control"}}
+        </div>
+        <div class="form-group">
+            <label>Scoring</label>
+            <select onchange={{action (mut newGame.scoring) value="target.value"}} class="form-control custom-select">
+                <option value="highest" selected={{eq newGame.scoring 'highest'}}>Highest Wins</option>
+                <option value="lowest" selected={{eq newGame.scoring 'lowest'}}>Lowest Wins</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <hr/>
+            <div class="col-md-6">
+              <button class="btn btn-primary btn-block" {{action 'createGame'}}>Create Game</button>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-secondary btn-block" {{action (toggle 'showCreateGame' this)}}>Cancel</button>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{{else}}
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <button class="btn btn-primary btn-block" {{action (toggle 'showCreateGame' this)}}>Create a game</button>
+    </div>
+
+    <div class="col-md-8 offset-md-2">
+      <hr/>
+    </div>
+
+    <div class="col-md-8 offset-md-2">
+      <h2 class="text-xs-center">Games Played</h2>
+    </div>
+
+    <div class="col-md-8 offset-md-2">
+      <div class="list-group">
+        {{#each model as |game|}}
+          <div class="list-group-item">
+            <div class="pull-right text-info">
+                {{game.players.length}} Players
+            </div>
+            <h4 class="list-group-item-heading">
+              {{game.name}}
+              <small class="text-muted">{{game.type}}</small>
+            </h4>
+            <small>Played on {{moment-format game.playedAt 'M/D/YYYY'}}</small>
+            <hr/>
+            <div class="text-xs-center">
+              {{#if game.players.length}}
+                <button class="btn btn-secondary">{{fa-icon 'list'}}<span class="hidden-sm-down"> Scores</span></button>
+              {{/if}}
+              <button class="btn btn-secondary">{{fa-icon 'play-circle'}}<span class="hidden-sm-down"> Start</span></button>
+              <button class="btn btn-secondary text-primary">{{fa-icon 'edit'}}<span class="hidden-sm-down"> Edit</span></button>
+              <button class="btn btn-secondary text-danger">{{fa-icon 'trash-o'}}<span class="hidden-sm-down"> Remove</span></button>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+{{/if}}
