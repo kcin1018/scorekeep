@@ -1,0 +1,4 @@
+<div class="btn-group btn-group-justified" role="group">
+    <button class="btn btn-{{if (eq data values.truthy) 'info' 'secondary'}}" {{action 'select' 'truthy'}}>{{texts.truthy}}</button>
+    <button class="btn btn-{{if (eq data values.falsy) 'info' 'secondary'}}" {{action 'select' 'falsy'}}>{{texts.falsy}}</button>
+</div>
