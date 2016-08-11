@@ -1,7 +1,47 @@
 @import 'bootstrap';
 @import 'font-awesome';
 
+[data-ember-action] {
+  cursor: pointer;
+}
 
-.login {
-    padding-top: 5rem;
+.header-bar {
+    font-size: 2rem;
+
+    a {
+       color: white;
+    }
+
+    .dropdown-menu {
+        a {
+            color: black;
+        }
+    }
+}
+
+.flash-messages {
+    .alert {
+        text-align: center;
+    }
+}
+
+.page-content {
+    padding-top: 1rem;
+}
+
+.form-boolean {
+    margin: 0;
+
+    .btn-group-justified {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: separate;
+
+        .btn {
+            display: table-cell;
+            float: none;
+            width: 50%;
+        }
+    }
 }

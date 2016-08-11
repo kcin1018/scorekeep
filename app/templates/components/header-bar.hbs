@@ -1,0 +1,25 @@
+<div class="header-bar">
+    <div class="row">
+        <div class="col-xs-3">
+            {{#if session.isAuthenticated}}
+                <div class="dropdown{{if showUserDropdown ' open'}}">
+                    <a href="#" {{action (toggle 'showUserDropdown' this)}}>{{fa-icon 'user' fixedWidth=true}}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" {{action 'logout'}}>Logout</a>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        <div class="col-xs-6 text-xs-center">SK</div>
+        <div class="col-xs-3 text-xs-right">
+            {{#if session.isAuthenticated}}
+                <div class="dropdown{{if showMenuDropdown ' open'}}">
+                    <a href="#" {{action (toggle 'showMenuDropdown' this)}}>{{fa-icon 'list' fixedWidth=true}}</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        {{#link-to 'games' class="dropdown-item"}}Games{{/link-to}}
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
